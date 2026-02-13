@@ -1,23 +1,125 @@
+---
+import "../styles/global.css";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props || { title: "Portfolio" };
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
 	</head>
-	<body>
+	
+	<body class="bg-[#111111] text-white font-sans antialiased relative">
+		
+		<div 
+			id="spotlight" 
+			class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0"
+			style="background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(21, 73, 216, 0.25), transparent 30%);"
+		></div>
+
 		<slot />
+
+		<script>
+			const spotlight = document.getElementById('spotlight');
+			
+			document.addEventListener('mousemove', (e) => {
+				if (spotlight) {
+					// Hacemos visible el foco en cuanto mueves el ratón
+					spotlight.style.opacity = '1';
+					
+					// Movemos el centro del gradiente a la posición del ratón
+					// Usamos clientX/Y para que sea relativo a la ventana visible
+					spotlight.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(21, 73, 216, 0.25), transparent 40%)`;
+				}
+			});
+		</script>
 	</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+    /* Estilos globales normales */
+    html { scroll-behavior: smooth; }
+    body { margin: 0; }
+
+    /* --- ESTILOS DE IMPRESIÓN (PDF) --- */
+    @media print {
+        
+		#intro {
+			flex-wrap: wrap !important; /* Permite que baje si no cabe */
+		}
+        /* 1. EL TRUCO DE MAGIA: ESCALAR TODO */
+        /* Esto reduce toda la web al 65% de su tamaño. 
+           Es la forma más rápida de que quepa todo en 1-2 hojas. */
+        body {
+            zoom: 0.65; 
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            background-color: #111111 !important; /* Mantiene fondo oscuro */
+            color: white !important;
+        }
+
+        /* 2. OCULTAR COSAS INNECESARIAS */
+        /* Ocultamos spotlight, botones, scrollbars, etc */
+        #spotlight, nav, footer, button, header, .no-print {
+            display: none !important;
+        }
+
+        /* 3. RESETEAR MÁRGENES GIGANTES DE TAILWIND */
+        /* Esto es vital. space-y-16 (64px) pasa a ser 20px */
+        .space-y-16 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: 1.5rem !important; 
+        }
+        .gap-12 { gap: 1.5rem !important; }
+        .p-6 { padding: 1rem !important; } /* Reduce padding de tarjetas */
+        
+        /* Eliminar márgenes de scroll que usas para la navegación */
+        .scroll-mt-32 { 
+            scroll-margin-top: 0 !important; 
+            margin-top: 1rem !important; 
+        }
+
+        /* 4. OPTIMIZAR TEXTOS */
+        h1 { font-size: 2.5rem !important; margin-bottom: 0.5rem !important; }
+        h2 { font-size: 1.5rem !important; }
+        h3 { font-size: 1.25rem !important; margin-bottom: 0.5rem !important; }
+        p, span, li { 
+            font-size: 0.9rem !important; 
+            line-height: 1.4 !important; 
+        }
+
+        /* 5. ARREGLAR LA INTRODUCCIÓN */
+        #intro {
+            flex-direction: row !important; /* Forzar fila */
+            align-items: center !important;
+            gap: 2rem !important;
+            margin-bottom: 2rem !important;
+            height: auto !important;
+            min-height: 0 !important;
+        }
+        #intro img {
+            width: 120px !important; /* Foto más pequeña */
+            height: 120px !important;
+        }
+
+        /* 6. EVITAR CORTES FEOS */
+        section, .card, li {
+            break-inside: avoid; /* Intenta no cortar elementos por la mitad */
+            page-break-inside: avoid;
+        }
+        
+        /* 7. CONFIGURACIÓN DE PÁGINA */
+        @page {
+            size: A4;
+            margin: 1cm; /* Márgenes de papel mínimos */
+        }
+    }
 </style>

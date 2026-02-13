@@ -1,11 +1,46 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import NavBar from '../components/Navbar.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Daniel Linfon - Desarrollador">
+    
+    <header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-6 md:px-12">
+        <NavBar/>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-40 pb-20">
+        
+        <section class="flex flex-col items-center text-center mb-32 fade-in-up">
+            
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-white">
+                Computer Science Engineer
+            </h1>
+
+            <p class="text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed mb-10">
+                Meet Daniel, a Computer Science Engineer currently based in Valladolid, working at <span class="text-white font-medium">Renault Group</span>.
+                <br class="hidden md:block" /> Daniel thrives on complex challenges, loves writing code, and leveraging data to build scalable solutions.
+            </p>
+
+            <div id="about" class="relative group">
+                <a href="/about" class="flex items-center gap-3 bg-neutral-900 border border-neutral-800 rounded-full pl-2 pr-6 py-2 hover:border-neutral-600 transition-colors">
+                    <img 
+                        src="/foto_renault.jpeg" 
+                        alt="Daniel Avatar" 
+                        class="w-8 h-8 rounded-full object-cover" 
+                    />
+                    <span class="text-sm font-medium text-white">About me</span>
+                </a>
+            </div>
+        </section>  
+
+    </main>
+
+    <footer class="text-center py-10 text-neutral-600 text-sm">
+        <div class="text-neutral-600 text-sm font-mono pt-8 border-t border-neutral-800/50">
+            © {new Date().getFullYear()} / Daniel Linfon
+        </div>
+    </footer>
+
 </Layout>
+
