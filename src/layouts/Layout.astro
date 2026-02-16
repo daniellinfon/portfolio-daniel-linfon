@@ -9,15 +9,26 @@ const { title } = Astro.props || { title: "Portfolio" };
 ---
 
 <!doctype html>
-<html lang="es">
-	<head>
+	<html lang="es">
+		<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/foto_renault.jpeg?v=2" />
+		
+		<link rel="icon" type="image/jpeg" href="/foto_renault.jpeg?v=2" />
+		
 		<meta name="generator" content={Astro.generator} />
+		
 		<title>{title}</title>
+
+		<meta name="description" content="Portfolio de Daniel Linfon. Ingeniero Informático especializado en Data Science, IA y Desarrollo Web. Echa un vistazo a mis proyectos y experiencia." />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://daniellinfon.vercel.app/" />
+		<meta property="og:title" content="Daniel Linfon - Computer Science Engineer" />
+		<meta property="og:description" content="Software Engineer | Data & AI | Renault Group" />
+		<meta property="og:image" content="/preview.png" />
 	</head>
-	
+		
 	<body class="bg-[#111111] text-white font-sans antialiased relative">
 		
 		<div 
