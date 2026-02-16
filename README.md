@@ -2,6 +2,8 @@
 
 Welcome to the repository of my personal portfolio website. This project is built with **Astro** and **Tailwind CSS**, designed to be high-performance, responsive, and minimalist.
 
+🚀 **Live Demo:** [https://daniellinfon.vercel.app/](https://daniellinfon.vercel.app/)
+
 ## 🚀 Key Features
 
 * **⚡ Astro Powered:** Static site generation for lightning-fast performance and SEO optimization.
