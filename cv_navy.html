@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daniel Linfon Ye Liu - CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink: #14213d;
+    --muted: #5f6c80;
+    --paper: #fffdf8;
+    --cream: #f3f0e7;
+    --accent: #e1a92b;
+    --accent-dark: #956d08;
+    --blue: #e3ebf4;
+    --serif: "DM Serif Display", Georgia, serif;
+    --sans: "Manrope", "Segoe UI", Arial, sans-serif;
+  }
+  html, body {
+    background: #d8dee8;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 10px;
+    line-height: 1.42;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: var(--paper);
+    overflow: hidden;
+  }
+  header {
+    min-height: 46mm;
+    padding: 10mm 16mm 8mm;
+    display: grid;
+    grid-template-columns: 30mm 1fr auto;
+    gap: 9mm;
+    align-items: center;
+    color: #fff;
+    background: var(--ink);
+    position: relative;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 48mm;
+    height: 100%;
+    background: #285d8f;
+    clip-path: polygon(34% 0, 100% 0, 100% 100%, 0 100%);
+    opacity: .95;
+  }
+  .avatar {
+    width: 27mm;
+    height: 27mm;
+    border: 3px solid rgba(255,255,255,.9);
+    border-radius: 50%;
+    overflow: hidden;
+    background: #294a6d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f1d47d;
+    font: 27px var(--serif);
+    position: relative;
+    z-index: 1;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .head-main, .contact-panel { position: relative; z-index: 1; }
+  h1 { font: 27px/1.04 var(--serif); letter-spacing: .1px; }
+  .role {
+    margin-top: 4px;
+    color: #f1d47d;
+    font-size: 8.5px;
+    font-weight: 800;
+    letter-spacing: 2.1px;
+    text-transform: uppercase;
+  }
+  .intro {
+    margin-top: 6px;
+    max-width: 105mm;
+    color: #dce6f1;
+    font-size: 9.8px;
+  }
+  .contact-panel { width: 100%; margin-top: 9px; display: flex; flex-wrap: wrap; gap: 3px 10px; align-items: baseline; font-size: 7.5px; color: #fff; }
+  .contact-panel span { white-space: nowrap; }
+  .contact-panel span:last-child { flex-basis: 100%; }
+  .contact-panel b {
+    display: inline;
+    margin-right: 3px;
+    color: #f1d47d;
+    font-size: 7.3px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+  }
+  .contact-panel a { color: inherit; text-decoration: none; }
+  .contact-panel a:hover { text-decoration: underline; }
+  .layout {
+    display: grid;
+    grid-template-columns: 1.62fr .88fr;
+    min-height: calc(297mm - 46mm - 9mm);
+  }
+  main { padding: 6mm 9mm 6mm 16mm; }
+  aside {
+    padding: 6mm 16mm 6mm 8mm;
+    background: var(--blue);
+    border-left: 1px solid #c2d1df;
+  }
+  .section { margin-bottom: 5mm; }
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 2.5mm;
+    color: var(--accent-dark);
+    font-size: 9.4px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+  }
+  .section-heading::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: currentColor;
+    opacity: .35;
+  }
+  .summary { color: #39495f; font-size: 10px; }
+  .entry { position: relative; padding-left: 14px; margin-bottom: 4mm; }
+  .entry::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 7px;
+  }
+  .entry-title { font-size: 10.5px; font-weight: 800; }
+  .date { color: var(--accent-dark); font-size: 8px; font-weight: 800; white-space: nowrap; }
+  .company { margin: 1px 0 2px; color: var(--accent-dark); font-size: 9.8px; font-weight: 700; }
+  ul { list-style: none; }
+  li { position: relative; padding-left: 12px; margin-bottom: 2px; color: #405268; }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .project {
+    padding: 2.7mm 3mm 2.7mm 14px;
+    background: rgba(255,255,255,.7);
+    border-left: 3px solid var(--accent);
+    margin-bottom: 2.3mm;
+  }
+  .project .entry-top { margin-bottom: 3px; }
+  .project .entry-title { font-size: 10px; }
+  .project:last-child { margin-bottom: 0; }
+  .skill-group { margin-bottom: 3.5mm; }
+  .skill-label {
+    margin-bottom: 2mm;
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag {
+    padding: 2.5px 6px;
+    color: var(--ink);
+    background: rgba(255,255,255,.76);
+    border: 1px solid rgba(20,33,61,.14);
+    border-radius: 2px;
+    font-size: 8.2px;
+    font-weight: 700;
+  }
+  .side-entry { margin-bottom: 3.5mm; }
+  .side-entry strong { display: block; font-size: 9.8px; }
+  .side-entry span { display: block; color: var(--muted); font-size: 8.5px; }
+  .language { display: flex; justify-content: space-between; padding: 2mm 0; border-bottom: 1px solid rgba(20,33,61,.16); }
+  .language span:last-child { color: var(--muted); }
+  .footer {
+    min-height: 9mm;
+    padding: 3mm 16mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #e2eaf2;
+    background: var(--ink);
+    font-size: 8.3px;
+  }
+  .footer strong { color: #f1d47d; letter-spacing: 1px; text-transform: uppercase; }
+  @media print {
+    html, body { background: #fff; }
+    .page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="avatar"><img src="linkedin_foto.png" alt="Daniel Linfon Ye Liu" onerror="this.style.display='none';this.parentNode.textContent='DL';" /></div>
+    <div class="head-main">
+      <h1>Daniel Linfon Ye Liu</h1>
+      <div class="role">Software Engineer / AI &amp; Automation</div>
+      <div class="contact-panel">
+        <span><b>Contact</b>+34 640 13 40 36 · daniellin2003@gmail.com</span>
+        <span><b>Based in</b>Spain · Open to relocation</span>
+        <span><b>Online</b><a href="https://www.linkedin.com/in/daniel-linfon-ye-liu-a61864293/">LinkedIn</a> · <a href="https://github.com/daniellinfon">GitHub</a> · <a href="https://daniellinfon.vercel.app/">daniellinfon.vercel.app</a></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <main>
+      <section class="section">
+        <div class="section-heading">PROFESSIONAL SUMMARY</div>
+        <p class="summary">AI-focused Software Engineer with a Computer Engineering background and experience supporting digitalization and automation initiatives in manufacturing and logistics environments. I build backend and full-stack applications using Python, Django, FastAPI, React, SQL and PostgreSQL, and have contributed to LLM-powered conversational workflows for task orchestration and information retrieval across internal systems. My work combines software engineering, operational process understanding, data workflows and applied NLP.</p>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">Experience</div>
+        <article class="entry">
+          <div class="entry-top"><div class="entry-title">AI Software Engineer</div><div class="date">Jun 2026 - Present</div></div>
+          <div class="company">ALTEN · assigned to Airbus, Seville</div>
+          <ul>
+            <li>Develop AI-enabled applications supporting digitalization and optimization initiatives in manufacturing-related processes.</li>
+            <li>Design and implement backend and full-stack solutions using Python, Django, React, SQL and PostgreSQL.</li>
+            <li>Integrate LLM-powered capabilities into business workflows to support automation and improve access to operational information.</li>
+            <li>Contribute to RAG-based solutions and AI workflows using LangChain and LangGraph to connect language models with enterprise knowledge sources.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-top"><div class="entry-title">Technical Data Analyst · AI &amp; Digitalization</div><div class="date">Nov 2025 - Jun 2026</div></div>
+          <div class="company">Renault España S.A. · Valladolid</div>
+          <ul>
+            <li>Supported digitalization of logistics processes across the Alliance Logistics Network and import platforms.</li>
+            <li>Developed ETL pipelines and Power BI / Spotfire dashboards tracking 20+ logistics KPIs.</li>
+            <li>Built internal applications and automated workflows to digitize incident management and streamline logistics processes.</li>
+            <li>Developed LLM-powered conversational agents to support task orchestration and information retrieval across internal systems.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">Projects</div>
+        <article class="project">
+          <div class="entry-top"><div class="entry-title">NOVA AI · Multi-Agent Personal Assistant</div><div class="date">In progress</div></div>
+          <ul><li>Personal multi-agent AI platform with a LangGraph supervisor routing requests to file, email, calendar, knowledge and music agents over a shared RAG layer.</li><li>FastAPI, Django, PostgreSQL and Docker microservices for RAG, transcription, summarization and structured-data services, with Spotify/Google integrations and a React + TypeScript frontend.</li></ul>
+        </article>
+        <article class="project">
+          <div class="entry-top"><div class="entry-title">Spotify DJ · Local AI Music Assistant</div><div class="date">Full-stack</div></div>
+          <ul><li>FastAPI, React and TypeScript app with Spotify OAuth 2.0, personalized listening statistics and a local Ollama LLM with LangGraph / LangChain tool calling.</li><li>Streams real-time responses over Server-Sent Events and uses HttpOnly cookies, signed JWT storage, single-use CSRF state and scoped OAuth permissions.</li></ul>
+        </article>
+        <article class="project">
+          <div class="entry-top"><div class="entry-title">Music Assistant System · NLP &amp; LLM</div><div class="date">Bachelor's Thesis · 2025</div></div>
+          <ul><li>Fine-tuned BERT, RoBERTa and T5 models on 10,000+ custom samples, reaching 95%+ intent-classification accuracy on the evaluation set.</li><li>Built a conversational assistant with React, Flask, Node.js and Hugging Face Transformers for intent detection and entity extraction.</li></ul>
+        </article>
+      </section>
+    </main>
+
+    <aside>
+      <section class="section">
+        <div class="section-heading">Technical Skills</div>
+        <div class="skill-group"><div class="skill-label">Languages</div><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">C++</span></div></div>
+        <div class="skill-group"><div class="skill-label">Web &amp; APIs</div><div class="tags"><span class="tag">FastAPI</span><span class="tag">Django</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">REST</span></div></div>
+        <div class="skill-group"><div class="skill-label">AI &amp; ML</div><div class="tags"><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">AI Agents</span><span class="tag">RAG</span><span class="tag">Qdrant</span><span class="tag">ChromaDB</span><span class="tag">Embeddings</span><span class="tag">Transformers</span><span class="tag">Prompt Engineering</span><span class="tag">Agentic Workflows</span><span class="tag">Tool Calling</span><span class="tag">Hugging Face</span><span class="tag">PyTorch</span><span class="tag">NLP</span><span class="tag">Ollama</span></div></div>
+        <div class="skill-group"><div class="skill-label">Data &amp; BI</div><div class="tags"><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">Oracle</span><span class="tag">ETL</span><span class="tag">Power BI</span><span class="tag">Spotfire</span></div></div>
+        <div class="skill-group"><div class="skill-label">Delivery</div><div class="tags"><span class="tag">Git</span><span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">Microservices</span><span class="tag">VS Code</span><span class="tag">Jupyter</span></div></div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">Education</div>
+        <div class="side-entry"><strong>B.Sc. Computer Engineering</strong><span>University of Huelva · 2021 - 2025</span><span>Specialization in AI &amp; Data · GPA 7.4/10</span></div>
+        <div class="side-entry"><strong>Erasmus Exchange · AI &amp; Data Systems</strong><span>University of Stavanger, Norway · 2024 - 2025</span></div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">Languages</div>
+        <div class="language"><span>Spanish</span><span>Native</span></div>
+        <div class="language"><span>English</span><span>C1 · Advanced</span></div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">Additional</div>
+        <ul><li>Driving license B · Own vehicle</li><li>Willing to relocate</li></ul>
+      </section>
+    </aside>
+  </div>
+
+  <footer class="footer"><strong>Daniel Linfon Ye Liu</strong><span>Software Engineering · AI · Automation</span></footer>
+</div>
+</body>
+</html>
